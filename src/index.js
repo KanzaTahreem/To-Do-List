@@ -1,13 +1,25 @@
+/* eslint-disable */
 import _ from 'lodash';
+/* eslint-enable */
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
+const toDoList = document.querySelector('.list');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+const toDoArray = [
+  {
+    index: 0,
+    description: 'HTML',
+    completed: true,
+  },
 
-  return element;
-}
-
-document.body.appendChild(component());
+  {
+    index: 1,
+    description: 'CSS',
+    completed: false,
+  },
+  {
+    index: 2,
+    description: 'JavaScript',
+    completed: true,
+  },
+];
