@@ -4,6 +4,7 @@ import _ from 'lodash';
 import './style.css';
 
 const toDoList = document.querySelector('.list');
+const parser = new DOMParser();
 
 const toDoArray = [
   {
@@ -23,3 +24,17 @@ const toDoArray = [
     completed: true,
   },
 ];
+
+const addToDo = (todo) => {
+  const string = `
+    <li>
+      <input type="checkbox" ${todo.completed ? 'checked' : ''} id=${todo.id}>
+      ${todo.description}
+    </li>
+  `;
+  const todoElement = parser.parseFromString(string, 'text/html').body.firstChild;
+  toDoList.append(todoElement);
+};
+toDoArray.forEach((toDoListElement) => {
+  addToDo(toDoListElement);
+});
