@@ -20,3 +20,26 @@ body {
 .border-bottom {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
+
+.wrapper {
+  background-color: white;
+  box-shadow: 0 1px 6px lightslategrey;
+  width: 40%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 1.3em;
+}
+
+i {
+  font-size: 0.9em;
+  color: #545862a3;
+}
