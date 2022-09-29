@@ -1,10 +1,8 @@
-
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Webpack Template
+# To Do List
 
-> Build a simple yet powerful webpack boilerplate. Webpack is a static module bundler for modern JavaScript applications. It is intelligent enough to build all app dependencies based on file imports.
+> _To-do list_ is a tool that helps to organize a day. It lists the things that user need to do and allows to mark them as complete. This website is built using ES6 and Webpack!
 
 ## Built With
 
@@ -13,12 +11,15 @@
 - JavaScript
 - Webpack
 
+## Live Demo
+
+[Live Demo Link](https://kanzatahreem.github.io/To-Do-List/)
 
 ## Getting Started
 
 To get a local copy, run the fllowing command.
 
-- `git clone git@github.com:KanzaTahreem/Webpack-Template.git`
+- `git clone git@github.com:KanzaTahreem/To-Do-List.git`
 
 ### Prerequisites
 
