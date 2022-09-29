@@ -63,3 +63,21 @@ input {
 input::placeholder {
   font-style: italic;
 }
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  padding: 1em;
+  gap: 0.5em;
+}
+
+.clear-btn {
+  padding: 1em;
+  width: 100%;
+  background-color: #eee;
+  font-size: 1em;
+  color: #545862a3;
+}
