@@ -43,3 +43,23 @@ i {
   font-size: 0.9em;
   color: #545862a3;
 }
+
+form {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+button,
+input {
+  background-color: transparent;
+  border: none;
+}
+
+input {
+  font-size: 1em;
+}
+
+input::placeholder {
+  font-style: italic;
+}
