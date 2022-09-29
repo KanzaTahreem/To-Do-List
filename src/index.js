@@ -28,7 +28,7 @@ const toDoArray = [
 const addToDo = (todo) => {
   const string = `
     <li>
-      <input type="checkbox" ${todo.completed ? 'checked' : ''} id=${todo.id}>
+      <input type="checkbox" ${todo.completed ? 'checked' : ''} id=${todo.index}>
       ${todo.description}
     </li>
   `;
