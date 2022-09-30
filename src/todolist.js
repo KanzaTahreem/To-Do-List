@@ -10,6 +10,12 @@ class ToDoList {
     this.list.push(newTask);
     return newTask;
   }
+
+  addTaskFromLocalStorageToList = (index, description, isCompleted) => {
+    const newTask = new Task(index, description, isCompleted);
+    this.list.push(newTask);
+    return newTask;
+  }
 }
 
 export default ToDoList;
