@@ -8,7 +8,12 @@ const addToDo = (todo, todoList) => {
     <li class="border-bottom">
       <div class="list-item">
         <input type="checkbox" ${todo.isCompleted ? 'checked' : ''} id=${todo.index}>
-        ${todo.description}
+        <div class="todo-li">
+          ${todo.description}
+        </div>
+        <div>
+          <input type="text" class="edit-todo hidden" value=${todo.description}>
+        </div>
       </div>
       <i class="fa-regular fa-ellipsis-vertical menu"></i>
       <ul class="task-menu hidden">
@@ -53,7 +58,28 @@ const addToDo = (todo, todoList) => {
     addListToLocalStorage(todoList.list);
   });
 
-  /* function to display completed task */
+  /* functiom to edit task */
+  const toDoEl = todoElement.querySelector('.todo-li');
+  const editToDo = todoElement.querySelector('.edit-todo');
+  const editBtn = todoElement.querySelector('.edit');
+  editBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    toDoEl.classList.add('hidden');
+    editToDo.classList.remove('hidden');
+    taskMenu.classList.add('hidden');
+    editToDo.focus();
+  });
+
+  editToDo.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      todoList.updatedTaskDescription(todo.index, editToDo.value);
+      toDoEl.innerHTML = editToDo.value;
+      toDoEl.classList.remove('hidden');
+      editToDo.classList.add('hidden');
+      addListToLocalStorage(todoList.list);
+    }
+  });
 
   const todoCompleted = todoElement.querySelector('input[type="checkbox"]');
   if (todo.isCompleted) {

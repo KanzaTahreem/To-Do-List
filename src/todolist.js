@@ -20,6 +20,10 @@ class ToDoList {
     this.list[index - 1].isCompleted = isCompleted;
   }
 
+  updatedTaskDescription = (index, description) => {
+    this.list[index - 1].description = description;
+  }
+
   removeTask = (todo) => {
     this.list = this.list.filter((item) => item !== todo);
     this.list.forEach((task, indexOfTask) => {
