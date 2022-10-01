@@ -15,6 +15,10 @@ class ToDoList {
     }
     return null;
   }
+
+  updateTask = (index, isCompleted) => {
+    this.list[index - 1].isCompleted = isCompleted;
+  }
 }
 
 export default ToDoList;
