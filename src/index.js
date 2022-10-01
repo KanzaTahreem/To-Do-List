@@ -2,12 +2,12 @@
 import _, { add } from 'lodash';
 /* eslint-enable */
 import './style.css';
-import { addListToLocalStorage, loadListFromLocalStorage } from './localStorage.js';
-
-import ToDoList from './todolist.js';
-import addToDo from './ui_handlers.js';
+import { addListToLocalStorage, loadListFromLocalStorage } from './modules/localStorage.js';
+import { addToDo, toDoLi } from './modules/ui_handlers.js';
+import ToDoList from './modules/todolist.js';
 
 const submitBtn = document.querySelector('.submit-btn');
+const clearAllBtn = document.querySelector('.clear-btn');
 const addToDoInput = document.querySelector('.add-todo');
 
 const toDoList = new ToDoList();
@@ -26,5 +26,15 @@ submitBtn.addEventListener('click', (e) => {
   const pushedTask = toDoList.addNewTask(null, inputValue, false);
   addToDoInput.value = '';
   addToDo(pushedTask, toDoList);
+  addListToLocalStorage(toDoList.list);
+});
+
+clearAllBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  toDoList.removeCompletedTask();
+  toDoLi.innerHTML = '';
+  toDoList.list.forEach((task) => {
+    addToDo(task, toDoList);
+  });
   addListToLocalStorage(toDoList.list);
 });
