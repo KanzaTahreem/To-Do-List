@@ -106,4 +106,4 @@ const addToDo = (todo, todoList) => {
   toDoLi.append(todoElement);
 };
 
-export default addToDo;
+export { addToDo, toDoLi };
