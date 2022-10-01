@@ -44,6 +44,15 @@ const addToDo = (todo, todoList) => {
     taskMenu.classList.add('hidden');
   });
 
+  /* function to delete task */
+  const deleteBtn = todoElement.querySelector('.delete');
+  deleteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    todoList.removeTask(todo);
+    todoElement.remove();
+    addListToLocalStorage(todoList.list);
+  });
+
   /* function to display completed task */
 
   const todoCompleted = todoElement.querySelector('input[type="checkbox"]');
