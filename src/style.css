@@ -42,6 +42,7 @@ h1 {
 i {
   font-size: 0.9em;
   color: #545862a3;
+  cursor: pointer;
 }
 
 form {
@@ -72,6 +73,8 @@ li {
   display: flex;
   padding: 1em;
   gap: 0.5em;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .clear-btn {
@@ -80,4 +83,32 @@ li {
   background-color: #eee;
   font-size: 1em;
   color: #545862a3;
+}
+
+.list-item {
+  display: flex;
+  gap: 1em;
+}
+
+.task-menu {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.8rem;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  right: 32%;
+  background-color: #ddd;
+  box-shadow: 0 1px 5px #00000021;
+  padding: 0.2em 1.5em;
+  margin-top: 3em;
+  position: absolute;
+}
+
+.task-menu li {
+  padding: 1em;
+  position: relative;
+}
+
+.hidden {
+  display: none !important;
 }
