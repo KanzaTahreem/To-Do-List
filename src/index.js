@@ -14,7 +14,7 @@ const toDoList = new ToDoList();
 const dataFromLocalStorage = loadListFromLocalStorage();
 
 dataFromLocalStorage.forEach((toDoObject) => {
-  const pushedLocalTask = toDoList.addTaskFromLocalStorageToList(
+  const pushedLocalTask = toDoList.addNewTask(
     toDoObject.index, toDoObject.description, toDoObject.isCompleted,
   );
   addToDo(pushedLocalTask);
@@ -23,7 +23,7 @@ dataFromLocalStorage.forEach((toDoObject) => {
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const inputValue = addToDoInput.value;
-  const pushedTask = toDoList.addNewTask(inputValue);
+  const pushedTask = toDoList.addNewTask(null, inputValue, false);
   addToDoInput.value = '';
   addToDo(pushedTask);
   addListToLocalStorage(toDoList.list);

@@ -5,16 +5,15 @@ class ToDoList {
     this.list = [];
   }
 
-  addNewTask = (toDoInput) => {
-    const newTask = new Task(this.list.length + 1, toDoInput);
-    this.list.push(newTask);
-    return newTask;
-  }
-
-  addTaskFromLocalStorageToList = (index, description, isCompleted) => {
-    const newTask = new Task(index, description, isCompleted);
-    this.list.push(newTask);
-    return newTask;
+  addNewTask = (index = null, description = null, isCompleted = null) => {
+    if (description) {
+      const newTaskIndex = index || this.list.length + 1;
+      const newTaskIsCompleted = isCompleted || false;
+      const newTask = new Task(newTaskIndex, description, newTaskIsCompleted);
+      this.list.push(newTask);
+      return newTask;
+    }
+    return null;
   }
 }
 
