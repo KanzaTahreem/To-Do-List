@@ -70,7 +70,7 @@ const addToDo = (todo, todoList) => {
       todoList.updatedTaskDescription(todo.index, editToDo.value);
       toDoEl.innerHTML = editToDo.value;
       toDoEl.classList.remove('hidden');
-      editToDo.classList.add('hidden'); // Idher v code mein jo add aur remove kr rhi woh div pai kro input pai ni
+      editToDo.classList.add('hidden');
       addListToLocalStorage(todoList.list);
     }
   });
