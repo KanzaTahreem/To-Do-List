@@ -31,7 +31,6 @@ class ToDoList {
     });
   }
 
-  // Same ooper wala nechy paste kr do index ko set krnain k liya remove k baad
   removeCompletedTask = () => {
     this.list = this.list.filter((item) => item.isCompleted !== true);
     this.list.forEach((task, indexOfTask) => {
