@@ -14,17 +14,22 @@ body {
   align-items: center;
   text-align: center;
   height: 100vh;
-  background-color: #eee;
+  background-color: #42032c;
+  color: #ff4c29;
 }
 
 .border-bottom {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid  #ff4c293b;
 }
 
 .wrapper {
-  background-color: white;
-  box-shadow: 0 1px 6px lightslategrey;
+  display: flex;
+  flex-direction: column;
   width: 40%;
+  max-height: 90vh;
+  background-color: #2a0944;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px 2px #a10035;
 }
 
 header {
@@ -35,13 +40,16 @@ header {
 }
 
 h1 {
-  font-weight: 400;
+  font-weight: 700;
   font-size: 1.3em;
+  color: bisque;
+  font-style: italic;
+  width: 100%;
 }
 
 i {
   font-size: 0.9em;
-  color: #545862a3;
+  color: #ff4c29;
   cursor: pointer;
 }
 
@@ -59,6 +67,42 @@ input {
 
 input {
   font-size: 1em;
+}
+
+form input,
+.edit-todo {
+  width: 100%;
+  color: bisque;
+}
+
+.todo-list {
+  margin-top: 5px;
+  overflow-y: auto;
+}
+
+.todo-li {
+  text-align: left;
+}
+
+.edit-todo {
+  color: #ff4c29;
+}
+
+form input:focus,
+.edit-todo:focus {
+  outline: none;
+  width: 100%;
+  color: bisque;
+}
+
+.list-item {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+}
+
+input[type="checkbox"] {
+  filter: hue-rotate(10deg);
 }
 
 input::placeholder {
@@ -80,33 +124,52 @@ li {
 .clear-btn {
   padding: 1em;
   width: 100%;
-  background-color: #eee;
   font-size: 1em;
   color: #545862a3;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
 }
 
-.list-item {
-  display: flex;
-  gap: 1em;
+.clear-btn:hover {
+  letter-spacing: 10px;
+  transition: 1s ease-in-out;
 }
 
 .task-menu {
   display: flex;
   align-items: flex-end;
-  font-size: 0.8rem;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid #a1003582;
   border-radius: 5px;
   right: 32%;
-  background-color: #ddd;
-  box-shadow: 0 1px 5px #00000021;
-  padding: 0.2em 1.5em;
+  background-color: #2a0944;
+  box-shadow: 0 15px 10px -11px black;
+  padding: 1em 0.5em;
   margin-top: 3em;
   position: absolute;
+  font-size: 1.2em;
 }
 
 .task-menu li {
-  padding: 1em;
+  padding: 0 0.5em;
   position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4c2970;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d2988;
 }
 
 .hidden {
