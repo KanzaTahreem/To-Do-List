@@ -17,7 +17,7 @@ dataFromLocalStorage.forEach((toDoObject) => {
   const pushedLocalTask = toDoList.addNewTask(
     toDoObject.index, toDoObject.description, toDoObject.isCompleted,
   );
-  addToDo(pushedLocalTask, toDoList);
+  addToDo(pushedLocalTask, toDoList, toDoLi);
 });
 
 submitBtn.addEventListener('click', (e) => {
@@ -25,7 +25,7 @@ submitBtn.addEventListener('click', (e) => {
   const inputValue = addToDoInput.value;
   const pushedTask = toDoList.addNewTask(null, inputValue, false);
   addToDoInput.value = '';
-  addToDo(pushedTask, toDoList);
+  addToDo(pushedTask, toDoList, toDoLi);
   addListToLocalStorage(toDoList.list);
 });
 
@@ -34,7 +34,7 @@ clearAllBtn.addEventListener('click', (e) => {
   toDoList.removeCompletedTask();
   toDoLi.innerHTML = '';
   toDoList.list.forEach((task) => {
-    addToDo(task, toDoList);
+    addToDo(task, toDoList, toDoLi);
   });
   addListToLocalStorage(toDoList.list);
 });
