@@ -1,6 +1,3 @@
-/* eslint-disable */
-import _, { add } from 'lodash';
-/* eslint-enable */
 import './style.css';
 import { addListToLocalStorage, loadListFromLocalStorage } from './modules/localStorage.js';
 import { addToDo, toDoLi } from './modules/ui_handlers.js';
@@ -13,20 +10,28 @@ const addToDoInput = document.querySelector('.add-todo');
 const toDoList = new ToDoList();
 const dataFromLocalStorage = loadListFromLocalStorage();
 
-dataFromLocalStorage.forEach((toDoObject) => {
+const loadDataFromLocalStorage = (toDoObject) => {
   const pushedLocalTask = toDoList.addNewTask(
     toDoObject.index, toDoObject.description, toDoObject.isCompleted,
   );
-  addToDo(pushedLocalTask, toDoList);
+  addToDo(pushedLocalTask, toDoList, toDoLi);
+};
+
+dataFromLocalStorage.forEach((toDoObject) => {
+  loadDataFromLocalStorage(toDoObject);
 });
 
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+const addTodoListener = () => {
   const inputValue = addToDoInput.value;
   const pushedTask = toDoList.addNewTask(null, inputValue, false);
   addToDoInput.value = '';
-  addToDo(pushedTask, toDoList);
+  addToDo(pushedTask, toDoList, toDoLi);
   addListToLocalStorage(toDoList.list);
+};
+
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addTodoListener(e);
 });
 
 clearAllBtn.addEventListener('click', (e) => {
@@ -34,7 +39,9 @@ clearAllBtn.addEventListener('click', (e) => {
   toDoList.removeCompletedTask();
   toDoLi.innerHTML = '';
   toDoList.list.forEach((task) => {
-    addToDo(task, toDoList);
+    addToDo(task, toDoList, toDoLi);
   });
   addListToLocalStorage(toDoList.list);
 });
+
+export default addTodoListener;
