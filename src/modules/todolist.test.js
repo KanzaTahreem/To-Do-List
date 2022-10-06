@@ -27,4 +27,32 @@ describe('TodoLidt', () => {
       expect(toDoList.list.length).toBe(3);
     });
   });
+
+  describe('Remove task function', () => {
+    const toDoList = new ToDoList();
+    let task1, task2, task3, task4;
+    beforeAll(() => {
+      task1 = toDoList.addNewTask(null, 'First task', false);
+      task2 = toDoList.addNewTask(null, 'Second task', false);
+      task3 = toDoList.addNewTask(null, 'Third task', false);
+      task4 = toDoList.addNewTask(null, null, false);
+    })
+    test('should remove a task', () => {
+      toDoList.removeTask(task1);
+      expect(toDoList.list.length).toBe(2);
+      expect(task2.index).toBe(1);
+      expect(task3.index).toBe(2);
+    })
+
+    test('should remove second task', () => {
+      toDoList.removeTask(task3);
+      expect(toDoList.list.length).toBe(1);
+      expect(task2.index).toBe(1);
+    })
+
+    test('length should return 0', () => {
+      toDoList.removeTask(task2);
+      expect(toDoList.list.length).toBe(0);
+    })
+  })
 });
