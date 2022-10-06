@@ -3,7 +3,7 @@ import { addListToLocalStorage } from './localStorage.js';
 const toDoLi = document.querySelector('.list');
 const parser = new DOMParser();
 
-const addToDo = (todo, todoList) => {
+const addToDo = (todo, todoList, toDoLi) => {
   const string = `
     <li class="border-bottom">
       <div class="list-item">
