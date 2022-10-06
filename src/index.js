@@ -10,28 +10,20 @@ const addToDoInput = document.querySelector('.add-todo');
 const toDoList = new ToDoList();
 const dataFromLocalStorage = loadListFromLocalStorage();
 
-const loadDataFromLocalStorage = (toDoObject) => {
+dataFromLocalStorage.forEach((toDoObject) => {
   const pushedLocalTask = toDoList.addNewTask(
     toDoObject.index, toDoObject.description, toDoObject.isCompleted,
   );
   addToDo(pushedLocalTask, toDoList, toDoLi);
-};
-
-dataFromLocalStorage.forEach((toDoObject) => {
-  loadDataFromLocalStorage(toDoObject);
 });
 
-const addTodoListener = () => {
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
   const inputValue = addToDoInput.value;
   const pushedTask = toDoList.addNewTask(null, inputValue, false);
   addToDoInput.value = '';
   addToDo(pushedTask, toDoList, toDoLi);
   addListToLocalStorage(toDoList.list);
-};
-
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  addTodoListener(e);
 });
 
 clearAllBtn.addEventListener('click', (e) => {
@@ -43,5 +35,3 @@ clearAllBtn.addEventListener('click', (e) => {
   });
   addListToLocalStorage(toDoList.list);
 });
-
-export default addTodoListener;
