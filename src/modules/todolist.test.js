@@ -57,4 +57,16 @@ describe('TodoLidt', () => {
       expect(toDoList.list.length).toBe(0);
     });
   });
+
+  describe('Edit task function', () => {
+    const toDoList = new ToDoList();
+    let task1;
+    beforeAll(() => {
+      task1 = toDoList.addNewTask(null, 'Task to edit', false);
+    });
+    test('should edit description of a task', () => {
+      toDoList.updatedTaskDescription(1, 'Updated description');
+      expect(task1.description).toBe('Updated description');
+    });
+  });
 });
