@@ -78,4 +78,16 @@ describe('TodoLidt', () => {
       expect(task1.isCompleted).toBe(true);
     });
   });
+
+  describe('Clear all completed tasks function', () => {
+    const toDoList = new ToDoList();
+    toDoList.addNewTask(null, 'Task 1 clear', true);
+    toDoList.addNewTask(null, 'Task 2 clear', true);
+    const task3 = toDoList.addNewTask(null, 'Task 3 unclear', false);
+    test('should clear all completed tasks', () => {
+      toDoList.removeCompletedTask();
+      expect(toDoList.list.length).toBe(1);
+      expect(task3.index).toBe(1);
+    });
+  });
 });
