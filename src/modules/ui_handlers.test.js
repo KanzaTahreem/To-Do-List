@@ -3,7 +3,6 @@
  */
 import * as UIHandler from './ui_handlers.js';
 import ToDoList from './todolist.js';
-import { addListToLocalStorage } from './localStorage.js';
 
 describe('DOM', () => {
   document.body.innerHTML = `
@@ -39,7 +38,7 @@ describe('DOM', () => {
 
   test('Remove task from UI', () => {
     const todoListEl = document.querySelector('.list > li');
-    UIHandler.deleteBtnListener(toDoTask, toDoList, todoListEl, addListToLocalStorage);
+    UIHandler.deleteBtnListener(toDoTask, toDoList, todoListEl);
     const listItems = document.querySelectorAll('.list > li');
     expect(listItems.length).toBe(0);
     expect(toDoList.list.length).toBe(0);
@@ -67,9 +66,19 @@ describe('DOM', () => {
     checkbox.setAttribute('checked', true);
     UIHandler.checkToDoListener(toDoTask, toDoList, taskEl, checkbox);
     expect(toDoTask.isCompleted).toBe(true);
+  });
 
-    checkbox.removeAttribute('checked');
-    UIHandler.checkToDoListener(toDoTask, toDoList, taskEl, checkbox);
-    expect(toDoTask.isCompleted).toBe(false);
+  test('should remove all completed tasks from UI', () => {
+    const list = document.querySelector('.list');
+    list.innerHTML = '';
+    toDoList.list = [];
+    const task1 = toDoList.addNewTask(null, 'A task', false);
+    const task2 = toDoList.addNewTask(null, 'A task', true);
+    UIHandler.addToDo(task1, toDoList, list);
+    UIHandler.addToDo(task2, toDoList, list);
+    UIHandler.clearAllTasks(toDoList, UIHandler.toDoLi);
+    const listArray = document.querySelectorAll('.list > li');
+    expect(listArray.length).toBe(1);
+    expect(toDoList.list.length).toBe(1);
   });
 });

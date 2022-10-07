@@ -3,7 +3,7 @@ import { addListToLocalStorage } from './localStorage.js';
 const toDoLi = document.querySelector('.list');
 const parser = new DOMParser();
 
-const deleteBtnListener = (todo, todoList, todoElement, addListToLocalStorage) => {
+const deleteBtnListener = (todo, todoList, todoElement) => {
   todoList.removeTask(todo);
   todoElement.remove();
   addListToLocalStorage(todoList.list);
@@ -112,6 +112,20 @@ const addToDo = (todo, todoList, toDoListEl) => {
   toDoListEl.append(todoElement);
 };
 
+const clearAllTasks = (toDoList, toDoLi) => {
+  toDoList.removeCompletedTask();
+  toDoLi.innerHTML = '';
+  toDoList.list.forEach((task) => {
+    addToDo(task, toDoList, toDoLi);
+  });
+  addListToLocalStorage(toDoList.list);
+};
+
 export {
-  addToDo, toDoLi, deleteBtnListener, editToDoListener, checkToDoListener,
+  addToDo,
+  toDoLi,
+  deleteBtnListener,
+  editToDoListener,
+  checkToDoListener,
+  clearAllTasks,
 };
