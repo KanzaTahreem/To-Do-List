@@ -27,7 +27,8 @@ const checkToDoListener = (todo, todoList, todoElement, target) => {
     todoElement.style.textDecoration = 'none';
     todoElement.style.color = 'inherit';
   }
-}
+  addListToLocalStorage(todoList.list);
+};
 
 const addToDo = (todo, todoList, toDoListEl) => {
   const string = `
@@ -106,17 +107,7 @@ const addToDo = (todo, todoList, toDoListEl) => {
   }
 
   todoCompleted.addEventListener('change', (e) => {
-    if (e.target.checked) {
-      todoList.updateTask(todo.index, true);
-      todoElement.style.textDecoration = 'line-through';
-      todoElement.style.color = '#545862a3';
-    } else {
-      todoList.updateTask(todo.index, false);
-      todoElement.style.textDecoration = 'none';
-      todoElement.style.color = 'inherit';
-    }
-
-    addListToLocalStorage(todoList.list);
+    checkToDoListener(todo, todoList, todoElement, e.target);
   });
   toDoListEl.append(todoElement);
 };
