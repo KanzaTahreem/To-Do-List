@@ -42,6 +42,11 @@ To get a local copy, run the fllowing command.
 - Twitter: [@kanza_tahreem](https://twitter.com/kanza_tahreem)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kanza-tahreem/)
 
+👤 **Author**
+
+- GitHub: [@sntgopl](https://github.com/sntgopl)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/santiago-pons-lezica-92374724)
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
