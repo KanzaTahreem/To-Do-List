@@ -3,9 +3,30 @@ import { addListToLocalStorage } from './localStorage.js';
 const toDoLi = document.querySelector('.list');
 const parser = new DOMParser();
 
-const deleteBtnListener = (todo, todoList, todoElement, addListToLocalStorage) => {
+const deleteBtnListener = (todo, todoList, todoElement) => {
   todoList.removeTask(todo);
   todoElement.remove();
+  addListToLocalStorage(todoList.list);
+};
+
+const editToDoListener = (todo, todoList, toDoEl, editToDo) => {
+  todoList.updatedTaskDescription(todo.index, editToDo.value);
+  toDoEl.innerHTML = editToDo.value;
+  toDoEl.classList.remove('hidden');
+  editToDo.classList.add('hidden');
+  addListToLocalStorage(todoList.list);
+};
+
+const checkToDoListener = (todo, todoList, todoElement, target) => {
+  if (target.checked) {
+    todoList.updateTask(todo.index, true);
+    todoElement.style.textDecoration = 'line-through';
+    todoElement.style.color = '#545862a3';
+  } else {
+    todoList.updateTask(todo.index, false);
+    todoElement.style.textDecoration = 'none';
+    todoElement.style.color = 'inherit';
+  }
   addListToLocalStorage(todoList.list);
 };
 
@@ -71,11 +92,7 @@ const addToDo = (todo, todoList, toDoListEl) => {
   editToDo.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      todoList.updatedTaskDescription(todo.index, editToDo.value);
-      toDoEl.innerHTML = editToDo.value;
-      toDoEl.classList.remove('hidden');
-      editToDo.classList.add('hidden');
-      addListToLocalStorage(todoList.list);
+      editToDoListener(todo, todoList, toDoEl, editToDo);
     }
   });
 
@@ -90,19 +107,25 @@ const addToDo = (todo, todoList, toDoListEl) => {
   }
 
   todoCompleted.addEventListener('change', (e) => {
-    if (e.target.checked) {
-      todoList.updateTask(todo.index, true);
-      todoElement.style.textDecoration = 'line-through';
-      todoElement.style.color = '#545862a3';
-    } else {
-      todoList.updateTask(todo.index, false);
-      todoElement.style.textDecoration = 'none';
-      todoElement.style.color = 'inherit';
-    }
-
-    addListToLocalStorage(todoList.list);
+    checkToDoListener(todo, todoList, todoElement, e.target);
   });
   toDoListEl.append(todoElement);
 };
 
-export { addToDo, toDoLi, deleteBtnListener };
+const clearAllTasks = (toDoList, toDoLi) => {
+  toDoList.removeCompletedTask();
+  toDoLi.innerHTML = '';
+  toDoList.list.forEach((task) => {
+    addToDo(task, toDoList, toDoLi);
+  });
+  addListToLocalStorage(toDoList.list);
+};
+
+export {
+  addToDo,
+  toDoLi,
+  deleteBtnListener,
+  editToDoListener,
+  checkToDoListener,
+  clearAllTasks,
+};

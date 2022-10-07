@@ -57,4 +57,37 @@ describe('TodoLidt', () => {
       expect(toDoList.list.length).toBe(0);
     });
   });
+
+  describe('Edit task function', () => {
+    const toDoList = new ToDoList();
+    let task1;
+    beforeAll(() => {
+      task1 = toDoList.addNewTask(null, 'Task to edit', false);
+    });
+    test('should edit description of a task', () => {
+      toDoList.updatedTaskDescription(1, 'Updated description');
+      expect(task1.description).toBe('Updated description');
+    });
+  });
+
+  describe('Check completed function', () => {
+    const toDoList = new ToDoList();
+    const task1 = toDoList.addNewTask(null, 'Task to complete', false);
+    test('should return a completed task', () => {
+      toDoList.updateTask(1, true);
+      expect(task1.isCompleted).toBe(true);
+    });
+  });
+
+  describe('Clear all completed tasks function', () => {
+    const toDoList = new ToDoList();
+    toDoList.addNewTask(null, 'Task 1 clear', true);
+    toDoList.addNewTask(null, 'Task 2 clear', true);
+    const task3 = toDoList.addNewTask(null, 'Task 3 unclear', false);
+    test('should clear all completed tasks', () => {
+      toDoList.removeCompletedTask();
+      expect(toDoList.list.length).toBe(1);
+      expect(task3.index).toBe(1);
+    });
+  });
 });

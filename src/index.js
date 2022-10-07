@@ -1,6 +1,6 @@
 import './style.css';
 import { addListToLocalStorage, loadListFromLocalStorage } from './modules/localStorage.js';
-import { addToDo, toDoLi } from './modules/ui_handlers.js';
+import { addToDo, toDoLi, clearAllTasks } from './modules/ui_handlers.js';
 import ToDoList from './modules/todolist.js';
 
 const submitBtn = document.querySelector('.submit-btn');
@@ -28,10 +28,5 @@ submitBtn.addEventListener('click', (e) => {
 
 clearAllBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  toDoList.removeCompletedTask();
-  toDoLi.innerHTML = '';
-  toDoList.list.forEach((task) => {
-    addToDo(task, toDoList, toDoLi);
-  });
-  addListToLocalStorage(toDoList.list);
+  clearAllTasks(toDoList, toDoLi);
 });
