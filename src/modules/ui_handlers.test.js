@@ -61,7 +61,7 @@ describe('DOM', () => {
     list.innerHTML = '';
     toDoList.list = [];
     toDoTask = toDoList.addNewTask(null, 'Completed task', false);
-    UIHandler.addToDo(toDoTask, toDoList, UIHandler.toDoLi);
+    UIHandler.addToDo(toDoTask, toDoList, list);
     const taskEl = document.querySelector('.list > li');
     const checkbox = taskEl.querySelector('input[type="checkbox"]');
     checkbox.setAttribute('checked', true);
