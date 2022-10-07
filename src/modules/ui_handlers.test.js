@@ -27,8 +27,8 @@ describe('DOM', () => {
 </section>`;
 
   let toDoTask;
+  const toDoList = new ToDoList();
   test('Add task to UI', () => {
-    const toDoList = new ToDoList();
     UIHandler.toDoLi = document.querySelector('.list');
     toDoTask = toDoList.addNewTask(null, 'First Task', false);
     UIHandler.addToDo(toDoTask, toDoList, UIHandler.toDoLi);
@@ -38,11 +38,21 @@ describe('DOM', () => {
   });
 
   test('Remove task from UI', () => {
-    const toDoList = new ToDoList();
     const todoListEl = document.querySelector('.list > li');
     UIHandler.deleteBtnListener(toDoTask, toDoList, todoListEl, addListToLocalStorage);
     const listItems = document.querySelectorAll('.list > li');
     expect(listItems.length).toBe(0);
     expect(toDoList.list.length).toBe(0);
+  });
+
+  test('Edit task function', () => {
+    UIHandler.toDoLi = document.querySelector('.list');
+    toDoTask = toDoList.addNewTask(null, 'Task to edit', false);
+    UIHandler.addToDo(toDoTask, toDoList, UIHandler.toDoLi);
+    const taskEl = document.querySelector('.list > li');
+    const taskInputEL = taskEl.querySelector('input[type="text"]');
+    taskInputEL.value = 'Edited task';
+    UIHandler.editToDoListener(toDoTask, toDoList, taskEl, taskInputEL);
+    expect(toDoTask.description).toBe('Edited task');
   });
 });

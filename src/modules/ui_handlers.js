@@ -9,6 +9,14 @@ const deleteBtnListener = (todo, todoList, todoElement, addListToLocalStorage) =
   addListToLocalStorage(todoList.list);
 };
 
+const editToDoListener = (todo, todoList, toDoEl, editToDo) => {
+  todoList.updatedTaskDescription(todo.index, editToDo.value);
+  toDoEl.innerHTML = editToDo.value;
+  toDoEl.classList.remove('hidden');
+  editToDo.classList.add('hidden');
+  addListToLocalStorage(todoList.list);
+};
+
 const addToDo = (todo, todoList, toDoListEl) => {
   const string = `
     <li class="border-bottom">
@@ -71,11 +79,7 @@ const addToDo = (todo, todoList, toDoListEl) => {
   editToDo.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      todoList.updatedTaskDescription(todo.index, editToDo.value);
-      toDoEl.innerHTML = editToDo.value;
-      toDoEl.classList.remove('hidden');
-      editToDo.classList.add('hidden');
-      addListToLocalStorage(todoList.list);
+      editToDoListener(todo, todoList, toDoEl, editToDo);
     }
   });
 
@@ -105,4 +109,6 @@ const addToDo = (todo, todoList, toDoListEl) => {
   toDoListEl.append(todoElement);
 };
 
-export { addToDo, toDoLi, deleteBtnListener };
+export {
+  addToDo, toDoLi, deleteBtnListener, editToDoListener,
+};
