@@ -69,4 +69,13 @@ describe('TodoLidt', () => {
       expect(task1.description).toBe('Updated description');
     });
   });
+
+  describe('Check completed function', () => {
+    const toDoList = new ToDoList();
+    const task1 = toDoList.addNewTask(null, 'Task to complete', false);
+    test('should return a completed task', () => {
+      toDoList.updateTask(1, true);
+      expect(task1.isCompleted).toBe(true);
+    });
+  });
 });

@@ -17,6 +17,18 @@ const editToDoListener = (todo, todoList, toDoEl, editToDo) => {
   addListToLocalStorage(todoList.list);
 };
 
+const checkToDoListener = (todo, todoList, todoElement, target) => {
+  if (target.checked) {
+    todoList.updateTask(todo.index, true);
+    todoElement.style.textDecoration = 'line-through';
+    todoElement.style.color = '#545862a3';
+  } else {
+    todoList.updateTask(todo.index, false);
+    todoElement.style.textDecoration = 'none';
+    todoElement.style.color = 'inherit';
+  }
+}
+
 const addToDo = (todo, todoList, toDoListEl) => {
   const string = `
     <li class="border-bottom">
@@ -110,5 +122,5 @@ const addToDo = (todo, todoList, toDoListEl) => {
 };
 
 export {
-  addToDo, toDoLi, deleteBtnListener, editToDoListener,
+  addToDo, toDoLi, deleteBtnListener, editToDoListener, checkToDoListener,
 };

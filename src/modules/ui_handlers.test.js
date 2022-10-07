@@ -55,4 +55,20 @@ describe('DOM', () => {
     UIHandler.editToDoListener(toDoTask, toDoList, taskEl, taskInputEL);
     expect(toDoTask.description).toBe('Edited task');
   });
+
+  test('Check completed function', () => {
+    // Arrange
+    toDoTask = toDoList.addNewTask(null, 'abcdefg', false);
+    UIHandler.addToDo(toDoTask, toDoList, UIHandler.toDoLi);
+    const taskEl = document.querySelector('.list > li');
+    const checkbox = taskEl.querySelector('input[type="checkbox"]');
+    // checkbox.setAttribute('checked', true);
+    // UIHandler.checkToDoListener(toDoTask, toDoList, taskEl, checkbox);
+    toDoTask.isCompleted = true;
+    // Act
+    // Assert
+    expect(checkbox).toBe(true);
+    // toDoTask apply isCompleted to true
+    // display true in checkbox --> checked input[type="checkbox"]
+  });
 });
