@@ -2,7 +2,7 @@
 
 # To Do List
 
-> _To-do list_ is a tool that helps to organize a day. It lists the things that user need to do and allows to mark them as complete. This website is built using ES6 and Webpack!
+> _To-do list_ is a tool that helps users to organize their day. It lists the things that user need to do and allows to mark them as complete. This website is built using ES6 and Webpack!
 
 ## Built With
 
